@@ -4,9 +4,9 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-    android {
-        namespace = "com.quicktask"
-        compileSdk = 34
+android {
+    namespace = "com.quicktask"
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.quicktask"
@@ -17,6 +17,12 @@ plugins {
 
         vectorDrawables {
             useSupportLibrary = true
+        }
+        
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
+            }
         }
     }
 
@@ -41,6 +47,7 @@ plugins {
 
     buildFeatures {
         compose = true
+        buildConfig = false
     }
 
     composeOptions {
