@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Switch, Button, Alert } from 'react-native';
-import { getSettings, setSettings, initDB } from '../lib/outboxStore';
+import { getSettings, setSettings } from '../lib/outboxStore';
 
 
 export default function SettingsScreen() {
@@ -9,7 +9,6 @@ export default function SettingsScreen() {
 
 
   useEffect(() => {
-    initDB();
     (async () => {
       const s = await getSettings();
       setDestEmail(s.destEmail ?? '');

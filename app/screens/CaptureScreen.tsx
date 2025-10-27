@@ -4,27 +4,15 @@ import * as ImagePicker from 'expo-image-picker';
 import { compressImage } from '../lib/image';
 import { useOutbox } from '../state/useOutbox';
 import { useNavigation } from '@react-navigation/native';
-import { getSettings } from '../lib/outboxStore';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
 
 
 export default function CaptureScreen() {
   const [text, setText] = useState('');
   const [imageUri, setImageUri] = useState<string | null>(null);
   const { createAndSend } = useOutbox();
-  // @ts-ignore
-  const nav = useNavigation();
-
-
-  useEffect(() => {
-    (async () => {
-      const s = await getSettings();
-      if (!s.destEmail) {
-        Alert.alert('Set your email', 'Add your destination email in Settings to start.', [
-          { text: 'Open Settings', onPress: () => nav.navigate('Settings') }
-        ]);
-      }
-    })();
-  }, []);
+  const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
 
   async function pickImage() {
