@@ -5,16 +5,17 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import com.quicktask.data.AppDatabase
 import kotlinx.coroutines.launch
-import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -85,10 +86,10 @@ fun CaptureScreen(navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             label = { Text("Type a quick idea or task...") },
             singleLine = true, // Prevent line breaks
-            keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
-                imeAction = androidx.compose.foundation.text.ImeAction.Send
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Send
             ),
-            keyboardActions = androidx.compose.foundation.text.KeyboardActions(
+            keyboardActions = KeyboardActions(
                 onSend = { handleSend() }
             )
         )
