@@ -4,14 +4,14 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-android {
-    namespace = "com.quicktask"
-    compileSdk = 34
+    android {
+        namespace = "com.quicktask"
+        compileSdk = 33
 
-    defaultConfig {
-        applicationId = "com.quicktask"
-        minSdk = 24
-        targetSdk = 34
+        defaultConfig {
+            applicationId = "com.quicktask"
+            minSdk = 24
+            targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -19,11 +19,6 @@ android {
             useSupportLibrary = true
         }
         
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas")
-            }
-        }
     }
 
     buildTypes {
