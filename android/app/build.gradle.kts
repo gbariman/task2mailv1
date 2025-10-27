@@ -54,6 +54,15 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("androidx.core:core:1.10.1")
+        force("androidx.core:core-ktx:1.10.1")
+        force("androidx.emoji2:emoji2:1.3.0")
+        force("androidx.emoji2:emoji2-views-helper:1.3.0")
+    }
+}
+
 dependencies {
     // Core Android
     implementation("androidx.core:core-ktx:1.10.1")
